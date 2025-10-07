@@ -1,0 +1,44 @@
+.bar {
+    width: 80vw;
+    height: 300px;
+    border: 2px black solid;
+    position: relative;
+    top: 50px;
+    left: 10vw;
+}
+
+.blue {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    background-color: blue;
+}
+
+.row {
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+    width: 600px;
+    left: 50%;
+    top: 20%;
+}
+
+.row-item {
+    position: relative;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    background-color: green;
+}
+
+.purple {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    background-color: purple;}
