@@ -41,3 +41,16 @@ function getExpensiveCars(cars: Car[], minPrice: number): Car[] {
 
 // 2) Funktionen mit Array-Funktionen
 
+function getTotalPriceReduce(cars: Car[]): number {
+    return cars.reduce((sum:number, car:Car):number => sum + car.price, 0);
+}
+
+function printCarsMap(cars: Car[]): void {
+    cars.map((car:Car) =>
+        console.log(`${car.brand} ${car.model} (${car.year}) - ${car.price}€`)
+    );
+}
+
+function getExpensiveCarsFilter(cars: Car[], minPrice: number): Car[] {
+    return cars.filter((car:Car) => car.price > minPrice);
+}
