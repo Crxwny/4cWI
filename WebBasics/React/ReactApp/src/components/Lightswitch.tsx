@@ -1,14 +1,19 @@
-import { useState } from "react";
+type Props = {
+  onPress: () => void;
+  isOn: boolean;
+}
 
-type Props = {}
-
-export default function Lightswitch({}: Props) {
-    const [isOn, setIsOn] = useState(false);
-    let style = isOn ? "bg-yellow-500" : "bg-gray-500";
+export default function Lightswitch({ onPress, isOn }: Props) {
+    
   return (
-    <div className={`${style} flex flex-col items-center justify-center w-64 h-64`}>
-        <button className="bg-green-500 text-white hover:bg-green-700 px-4 py-2 m-2 text-center cursor-pointer" onClick={() => setIsOn(!isOn)}>Toggle</button>
-        <div className="text-4xl mb-4"   >💡</div>
+    <div className={`flex flex-col items-center justify-center w-64 h-64 ${isOn ? 'bg-yellow-400' : 'bg-gray-400'}`}>
+      <div
+        className="bg-green-500 text-white hover:bg-green-700 px-4 py-2 m-2 text-center cursor-pointer"
+        onClick={onPress}
+      >
+        Toggle
+      </div>
+      <div className="text-4xl mb-4">💡</div>
     </div>
   )
 }
