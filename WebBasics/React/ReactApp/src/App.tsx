@@ -1,10 +1,10 @@
 import "./App.css";
-import Counter from "./components/Counter";
+import Lightswitch from "./components/Lightswitch";
 
 export default function App() {
     return (
         <div>
-            <Counter />
+            <Lightswitch />
           </div>
     )
 }
