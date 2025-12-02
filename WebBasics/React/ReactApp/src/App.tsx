@@ -1,23 +1,31 @@
 
-import ToDo from "./components/ToDo";
+import Person from "./components/Person";
 import { useEffect, useState } from "react";
 
+type PersonData = {
+  id: string;
+  name: string;
+  avatar: string;
+  jobTitle: string;
+  createdAt: string;
+}
+
 export default function App() {
-const [todos, setTodos] = useState([]);
+const [persons, setPersons] = useState<PersonData[]>([]);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/todos").then((res)=>
+    fetch("https://6909e9651a446bb9cc209098.mockapi.io/person").then((res)=>
     res.json().then((json) => {
-      setTodos(json);
+      setPersons(json);
     })
   );
   }, []);
   return (
     <div>
-      <h1>ToDos</h1>
+      <h1>Personen</h1>
       <div className="grid grid-cols-8 gap-2">
-      {todos.map((todo: any) => (
-        <ToDo title={todo.title} completed={todo.completed} />
+      {persons.map((person) => (
+        <Person name={person.name} avatar={person.avatar} jobTitle={person.jobTitle} />
       ))    
       }
       </div>
