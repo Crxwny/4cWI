@@ -1,22 +1,26 @@
-import { useState } from "react";
-import "./App.css";
-import Lightswitch from "./components/Lightswitch";
-import Counter from "./components/Counter";
+
+import ToDo from "./components/ToDo";
+import { useEffect, useState } from "react";
 
 export default function App() {
-  const [isOn, setIsOn] = useState(false);
-  const [count, setCount] = useState(0);
+const [todos, setTodos] = useState([]);
 
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/todos").then((res)=>
+    res.json().then((json) => {
+      setTodos(json);
+    })
+  );
+  }, []);
   return (
     <div>
-      <Lightswitch onPress={() => setIsOn(!isOn)} isOn={isOn}/>
-      <p>The light is {isOn ? "on" : "off"}.</p>
-      <Counter 
-        count={count}
-        onIncrement={() => setCount(count + 1)}
-        onDecrement={() => setCount(count - 1)}
-        onReset={() => setCount(0)}
-      />
+      <h1>ToDos</h1>
+      <div className="grid grid-cols-8 gap-2">
+      {todos.map((todo: any) => (
+        <ToDo title={todo.title} completed={todo.completed} />
+      ))    
+      }
+      </div>
     </div>
-  );
+  )
 }
