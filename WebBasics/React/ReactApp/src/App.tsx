@@ -1,34 +1,16 @@
-
-import Person from "./components/Person";
-import { useEffect, useState } from "react";
-
-type PersonData = {
-  id: string;
-  name: string;
-  avatar: string;
-  jobTitle: string;
-  createdAt: string;
-}
+import { useState } from "react";
+import ToDoList from "./components/ToDoList";
 
 export default function App() {
-const [persons, setPersons] = useState<PersonData[]>([]);
+const [searchValue, setSearchValue] = useState("");
 
-  useEffect(() => {
-    fetch("https://6909e9651a446bb9cc209098.mockapi.io/person").then((res)=>
-    res.json().then((json) => {
-      setPersons(json);
-    })
-  );
-  }, []);
   return (
     <div>
-      <h1>Personen</h1>
-      <div className="grid grid-cols-8 gap-2">
-      {persons.map((person) => (
-        <Person name={person.name} avatar={person.avatar} jobTitle={person.jobTitle} />
-      ))    
-      }
+      <h1>To Do List</h1>
+      <div className = "mb-4">
+        <input className="border p-2" type="text" placeholder="Search" value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
       </div>
+      <ToDoList search={searchValue} />
     </div>
   )
 }
