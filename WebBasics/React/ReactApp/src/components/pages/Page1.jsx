@@ -6,6 +6,8 @@ import Container from "../Container";
 import { Link } from "react-router-dom";
 
 export default function Page1() {
+  const person = { firstname: "hans", lastname: "müller" };
+  
   return (
     <div className="w-screen bg-amber-200">
       <div className="grid grid-cols-3 w-screen gap-2">
@@ -19,7 +21,8 @@ export default function Page1() {
       <Button text="Click Me" />
       <DropDown />
       <Container />
-      <Link to="/p2" className="bg-green-400 rounded-2xl hover:cursor-pointer hover:bg-green-500">
+      <Link to="/p2" state={{ person: person, title: "test" }} 
+      className="bg-green-400 rounded-2xl hover:cursor-pointer hover:bg-green-900 p-4">
         Page 2
       </Link>
     </div>
